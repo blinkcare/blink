@@ -1,0 +1,19 @@
+{
+  "name": "blink",
+  "version": "0.0.1",
+  "description": "PennApps 2017",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "cxs": "^6.0.0",
+    "lodash": "^4.17.4",
+    "next": "^3.2.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "styled-system": "^1.0.0-13"
+  }
+}
