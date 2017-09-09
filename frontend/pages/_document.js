@@ -14,6 +14,7 @@ export default class StyledDocument extends Document {
     return (
       <html>
         <Head>
+          <meta name="viewport" content="width=device-width,initial-scale=1" />
           <style children={css} />
           {styleTags}
         </Head>
