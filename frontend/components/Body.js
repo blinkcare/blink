@@ -47,7 +47,9 @@ class Body extends Component {
     return (
       <Box>
         <Flex align="center">
-          {letters.map(letter => <Letter>{letter}</Letter>)}
+          {letters.map((letter, i) => (
+            <Letter key={`letter-${i}`}>{letter}</Letter>
+          ))}
           {typing && <Typing ml={3} />}
         </Flex>
       </Box>
