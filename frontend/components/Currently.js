@@ -3,6 +3,12 @@ import styled from 'styled-components'
 import { Text } from 'rebass'
 import colors from './colors'
 
-const Currently = props => <Text color={colors.grey} {...props} />
+const Base = styled(Text)`
+  font-size: 1rem;
+  flex-shrink: 0;
+  color: ${colors.grey};
+`
+
+const Currently = props => <Base {...props} />
 
 export default Currently
