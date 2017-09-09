@@ -14,5 +14,8 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "rebass": "^1.0.4"
+  },
+  "dependencies": {
+    "unfetch": "^3.0.0"
   }
 }
