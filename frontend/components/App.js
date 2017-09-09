@@ -34,10 +34,8 @@ class App extends Component {
     fetch(ENDPOINT, head)
       .then(r => r.json())
       .then(json => {
-        console.log(json)
         const letters = json.characters.split('')
         const { queue, status } = json
-        console.log(queue, status)
         this.setState({ letters, currently: queue, status })
       })
   }
