@@ -7,7 +7,7 @@ import colors from './colors'
 import fetch from 'unfetch'
 
 const KEY = '506005f4fd084a9682b47944f9273c18'
-const URL = 'https://api.giphy.com/v1/gifs/search?api_key=${KEY}&rating=g'
+const URL = `https://api.giphy.com/v1/gifs/search?api_key=${KEY}&rating=g`
 
 class Giphy extends Component {
   constructor() {
@@ -18,11 +18,15 @@ class Giphy extends Component {
   }
 
   componentDidMount() {
-    this.fetchData()
+    this.fetchData(this.props.search)
   }
 
-  fetchData() {
-    const q = replace(this.props.search, /\s+/, '+')
+  componentWillReceiveProps(nextProps) {
+    this.fetchData(nextProps.search)
+  }
+
+  fetchData(query) {
+    const q = replace(query, /\s+/, '+')
     fetch(`${URL}&q=${q}`)
       .then(r => r.json())
       .then(res => {
