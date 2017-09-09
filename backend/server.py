@@ -1,9 +1,13 @@
 import serial
 import time
 from flask import Flask, render_template
+from flask_cors import CORS
 from threading import Thread
+from gtts import gTTS
 
 app = Flask(__name__)
+CORS(app)
+
 
 characters = ""
 started = False
@@ -25,6 +29,10 @@ def status():
     status += '\n' + queue
 
     return render_template("status.html", status=status)
+
+#@app.route('/mp3')
+#def mp3():
+
 
 
 @app.route('/')

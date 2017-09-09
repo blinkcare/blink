@@ -5,7 +5,7 @@ import fetch from 'unfetch'
 import Letter from './Letter'
 import Typing from './Typing'
 
-const ENDPOINT = ''
+const ENDPOINT = 'http://localhost:5000/data'
 
 class Body extends Component {
   constructor() {
@@ -29,14 +29,11 @@ class Body extends Component {
     }
     fetch(ENDPOINT, head)
       .then(res => {
-        return res.json()
-      })
-      .then(json => {
-        if (isEmpty(json.new)) {
+        if (isEmpty(res)) {
           this.setState({ typing: true })
         } else {
           const { letters } = this.state
-          letters.push(json.new)
+          letters.push(res)
           this.setState({ letters, typing: false })
         }
       })
