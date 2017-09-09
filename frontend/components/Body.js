@@ -11,8 +11,7 @@ class Body extends Component {
   constructor() {
     super()
     this.state = {
-      letters: ['H', 'e', 'l', 'l', 'o', ' '],
-      typing: true
+      letters: ['H', 'e', 'l', 'l', 'o', ' ']
     }
   }
 
@@ -27,17 +26,11 @@ class Body extends Component {
       method: 'GET',
       mode: 'cors'
     }
-    fetch(ENDPOINT, head)
-    .then(r => r.text())
-      .then(res => {
-        if (isEmpty(res)) {
-          this.setState({ typing: true })
-        } else {
-          const { letters } = this.state
-          letters.push(res.split(''))
-          this.setState({ letters, typing: false })
-        }
-      })
+    fetch(ENDPOINT, head).then(r => r.text()).then(res => {
+      const { letters } = this.state
+      letters.push(res.split(''))
+      this.setState({ letters, typing: false })
+    })
   }
 
   render() {
@@ -48,7 +41,7 @@ class Body extends Component {
           {letters.map((letter, i) => (
             <Letter key={`letter-${i}`}>{letter}</Letter>
           ))}
-          {typing && <Typing ml={3} />}
+          <Typing ml={3} />
         </Flex>
       </Box>
     )
