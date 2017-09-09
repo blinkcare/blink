@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Flex, Text } from 'rebass'
+import { Flex } from 'rebass'
 import { isEmpty } from 'lodash'
 import fetch from 'unfetch'
 import Header from './Header'
@@ -45,7 +45,7 @@ class App extends Component {
   render() {
     const { characters, currently, status } = this.state
     return (
-      <main>
+      <Flex column align="center">
         <Header status={status} />
         <Card>
           <Flex wrap align="center" w={1}>
@@ -56,7 +56,7 @@ class App extends Component {
         </Card>
         <Weather />
         <News />
-      </main>
+      </Flex>
     )
   }
 }
