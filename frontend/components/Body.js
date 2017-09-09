@@ -29,9 +29,7 @@ class Body extends Component {
       mode: 'cors'
     }
     fetch(ENDPOINT + '/data', head).then(r => r.text()).then(res => {
-      const { letters } = this.state
-      letters.push(res.split(''))
-      this.setState({ letters })
+      this.setState({ letters: res.split('') })
     })
     fetch(ENDPOINT + '/queue', head).then(r => r.text()).then(currently => {
       this.setState({ currently })
