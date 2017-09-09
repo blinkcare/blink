@@ -4,7 +4,7 @@ import { Text } from 'rebass'
 import colors from './colors'
 
 const Base = styled(Text)`
-  font-size: 2rem;
+  font-size: 4rem;
   flex-shrink: 0;
   color: ${colors.grey};
 `

@@ -50,7 +50,7 @@ class App extends Component {
           {letters.map((letter, i) => (
             <Letter key={`letter-${i}`}>{letter}</Letter>
           ))}
-          {!isEmpty(currently) && (
+          {!isEmpty(letters) && (
             <Currently ml={1} mr={3}>
               {currently}
             </Currently>
