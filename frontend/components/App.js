@@ -3,7 +3,8 @@ import { Flex, Text } from 'rebass'
 import { isEmpty } from 'lodash'
 import fetch from 'unfetch'
 import Header from './Header'
-import Letter from './Letter'
+import Card from './Card'
+import Readout from './Readout'
 import Currently from './Currently'
 import Typing from './Typing'
 
@@ -14,7 +15,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      letters: [],
+      characters: '',
       currently: '',
       status: false
     }
@@ -31,31 +32,24 @@ class App extends Component {
       method: 'GET',
       mode: 'cors'
     }
-    fetch(ENDPOINT, head)
-      .then(r => r.json())
-      .then(json => {
-        const letters = json.characters.split('')
-        const { queue, status } = json
-        this.setState({ letters, currently: queue, status })
-      })
+    fetch(ENDPOINT, head).then(res => {
+      const { characters, queue, status } = res.json()
+      this.setState({ characters, currently: queue, status })
+    })
   }
 
   render() {
-    const { letters, currently, status } = this.state
+    const { characters, currently, status } = this.state
     return (
       <main>
         <Header status={status} />
-        <Flex wrap align="center">
-          {letters.map((letter, i) => (
-            <Letter key={`letter-${i}`}>{letter}</Letter>
-          ))}
-          {!isEmpty(letters) && (
-            <Currently ml={1} mr={3}>
-              {currently}
-            </Currently>
-          )}
-          <Typing />
-        </Flex>
+        <Card>
+          <Flex wrap align="center" w={1}>
+            {characters && <Readout mr={1}>{characters}</Readout>}
+            {currently && <Currently mr={3} children={currently} />}
+            <Typing />
+          </Flex>
+        </Card>
       </main>
     )
   }

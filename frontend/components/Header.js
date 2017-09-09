@@ -25,7 +25,7 @@ const Badge = styled.span`
 `
 
 const Header = ({ status }) => (
-  <Flex align="center" py={3}>
+  <Flex align="center" p={3}>
     <Badge status={status} />
     <Name m={0} ml={1}>
       Blink
