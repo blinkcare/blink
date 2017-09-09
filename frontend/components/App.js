@@ -51,7 +51,7 @@ class App extends Component {
         <Header status={status} />
         <Card>
           <Flex wrap align="center" w={1}>
-            {characters && <Readout mr={1}>{characters}</Readout>}
+            {characters && <Readout mr={2}>{characters}</Readout>}
             {currently && <Currently mr={3} children={currently} />}
             <Typing />
           </Flex>

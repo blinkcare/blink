@@ -5,7 +5,7 @@ import colors from './colors'
 
 const bulge = keyframes`
   50% {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 `
 const blink = keyframes`
@@ -30,10 +30,10 @@ const Dot = styled.span`
   height: 1rem;
   border-radius: 1rem;
   background-color: #fff;
-  opacity: .4;
+  opacity: 0.4;
   animation: ${blink} 1s ease-in infinite ${props => props.delay}s;
-  margin-left: .125rem;
-  margin-right: .125rem;
+  margin-left: 0.125rem;
+  margin-right: 0.125rem;
 `
 
 const Typing = props => (
