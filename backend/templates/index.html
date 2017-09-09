@@ -90,7 +90,7 @@ body {
     		Blink!
     	</div>
     </h1>
-    <div>
+    <div id="chars">
         <br> Text goes here
     </div>
         <div class="footer">
@@ -102,6 +102,17 @@ body {
             <a href="http://instagram.com/otherwork">@otherwork</a>&nbsp;&nbsp;&nbsp;
             <a href="mailto:m@otherwork.co">m@otherwork.co</a> -->
         </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        setInterval(function() {
+            $.ajax({
+            url: "/data",
+            type: "get",
+            success: function(response) {
+                $("#chars").html(response)
+            },
+        })}, 1000)
+    </script>
 </body>
 
 </html>
