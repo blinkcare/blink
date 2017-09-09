@@ -4,7 +4,7 @@ import { Text } from 'rebass'
 import colors from './colors'
 
 const Base = styled(Text)`
-  color: ${colors.steel};
+  color: ${colors.black};
   font-size: 6rem;
   font-weight: 500;
 `

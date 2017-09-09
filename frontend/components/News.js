@@ -32,7 +32,7 @@ class News extends Component {
     const { news } = this.state
     return (
       <Card w={2 / 3}>
-        <Subhead mt={0} color={colors.slate} f={3} caps>
+        <Subhead mt={0} f={3} caps>
           News
         </Subhead>
         <Flex wrap mt={1}>

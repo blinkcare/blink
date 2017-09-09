@@ -18,11 +18,11 @@ class Giphy extends Component {
   }
 
   componentDidMount() {
-    this.fetchData(this.props.search)
+    this.fetchData(this.props.q)
   }
 
   componentWillReceiveProps(nextProps) {
-    this.fetchData(nextProps.search)
+    this.fetchData(nextProps.q)
   }
 
   fetchData(query) {
@@ -39,7 +39,7 @@ class Giphy extends Component {
     const { results } = this.state
     return (
       <Card w={2 / 3}>
-        <Subhead mt={0} mb={2} color={colors.slate} f={3} caps center>
+        <Subhead mt={0} mb={2} f={3} caps center>
           GIPHY
         </Subhead>
         <Flex wrap justify="center" m={-1}>

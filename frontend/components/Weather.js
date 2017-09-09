@@ -63,7 +63,7 @@ class Weather extends Component {
     } = this.state
     return (
       <Card w={1 / 2}>
-        <Subhead mt={0} color={colors.slate} f={3} caps>
+        <Subhead mt={0} f={3} caps>
           Weather
         </Subhead>
         <Flex align="center">
