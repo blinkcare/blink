@@ -28,12 +28,16 @@ class Body extends Component {
       method: 'GET',
       mode: 'cors'
     }
-    fetch(ENDPOINT + '/data', head).then(r => r.text()).then(res => {
-      this.setState({ letters: res.split('') })
-    })
-    fetch(ENDPOINT + '/queue', head).then(r => r.text()).then(currently => {
-      this.setState({ currently })
-    })
+    fetch(ENDPOINT + '/data', head)
+      .then(r => r.text())
+      .then(res => {
+        this.setState({ letters: res.split('') })
+      })
+    fetch(ENDPOINT + '/queue', head)
+      .then(r => r.text())
+      .then(currently => {
+        this.setState({ currently })
+      })
   }
 
   render() {
@@ -43,8 +47,11 @@ class Body extends Component {
         {letters.map((letter, i) => (
           <Letter key={`letter-${i}`}>{letter}</Letter>
         ))}
-        {!isEmpty(currently) &&
-          <Currently ml={1} mr={3}>{currently}</Currently>}
+        {!isEmpty(currently) && (
+          <Currently ml={1} mr={3}>
+            {currently}
+          </Currently>
+        )}
         <Typing />
       </Flex>
     )
