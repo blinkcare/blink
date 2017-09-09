@@ -28,7 +28,7 @@ class App extends Component {
   componentDidMount() {
     setInterval(() => {
       this.fetchData()
-    }, 800)
+    }, 500)
   }
 
   fetchData() {
