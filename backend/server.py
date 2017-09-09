@@ -31,15 +31,16 @@ morseAlphabet ={
         "W" : ".--",
         "X" : "-..-",
         "Y" : "-.--",
-        "Z" : "--.."
+        "Z" : "--..",
+        " " : ".-."
         }
 
 morseAlphabet=dict((v,k) for (k,v) in morseAlphabet.items())
 
 threshold = 1800
 
-short_press = 300
-long_press = 700
+short_press = 100
+long_press = 500
 new_char = 1000
 new_word = 3000
 
@@ -71,12 +72,13 @@ while True:
         started = False
         queue = ""
     value = get_value()
+    print(started)
     print(queue)
     millis = int(round(time.time() * 1000))
     while value < threshold:
         value = get_value()
     change = int(round(time.time() * 1000)) - millis
-    if new_char < change < new_word:
+    if new_char < change:
         if started == True:
             try:
                 characters += morseAlphabet[queue]
@@ -84,16 +86,16 @@ while True:
                 queue = ""
             except:
                 queue = ""
-    elif change > new_word:
-        if started == True:
-            try:
-                characters += morseAlphabet[queue]
-                print(characters)
-                queue = ""
-            except:
-                queue = ""
-            characters += " "
-            print(characters)
+    # elif change > new_word:
+    #     if started == True:
+    #         try:
+    #             characters += morseAlphabet[queue]
+    #             print(characters)
+    #             queue = ""
+    #         except:
+    #             queue = ""
+    #         characters += " "
+    #         print(characters)
     if value > threshold:
         millis = int(round(time.time() * 1000))
         while value > threshold:
