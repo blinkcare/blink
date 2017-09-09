@@ -172,9 +172,8 @@ while True:
         print("Change:", change)
         if short_press < change < long_press:
             s()
-        elif change > long_press:
+        elif long_press < change < reset:
             l()
         elif change > reset:
             characters = ""
             queue = ""
-            started = False
