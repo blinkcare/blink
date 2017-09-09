@@ -1,10 +1,9 @@
 import React from 'react'
-import { Box } from 'rebass'
+import { Image } from 'rebass'
 import { replace } from 'lodash'
 
 const Icon = ({ name = 'square', fill = '#ffffff', size = 48, ...props }) => (
-  <Box
-    is="img"
+  <Image
     src={`//icon.now.sh/${name}/${size}/${replace(fill, '#', '')}`}
     alt={`${name} icon`}
     style={{ width: size, height: size }}
