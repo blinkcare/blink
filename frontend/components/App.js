@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Flex } from 'rebass'
-import { isEmpty, includes, replace } from 'lodash'
+import { isEmpty, includes, last, split } from 'lodash'
 import fetch from 'unfetch'
 import Header from './Header'
 import Card from './Card'
@@ -41,12 +41,12 @@ class App extends Component {
       .then(res => {
         const { characters, queue, status } = res
         let app
-        if (includes(characters, /\/n$/)) {
+        if (includes(characters, '/N')) {
           app = <News />
-        } else if (includes(characters, /\/w$/)) {
+        } else if (includes(characters, '/W')) {
           app = <Weather />
-        } else if (includes(characters, /\/gif/)) {
-          app = <Giphy search={replace(characters, '/gif ', '')} />
+        } else if (includes(characters, '/G ')) {
+          app = <Giphy q={last(split(characters, '/G '))} />
         }
         this.setState({ characters, currently: queue, status, app })
       })
