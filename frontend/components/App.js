@@ -7,14 +7,16 @@ import Letter from './Letter'
 import Currently from './Currently'
 import Typing from './Typing'
 
-const ENDPOINT = 'http://blinkpennapps.localtunnel.me'
+const ENDPOINT = 'http://blinkpennapps.localtunnel.me/'
+const APPS = ['gif', 'w', 'n']
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       letters: [],
-      currently: ''
+      currently: '',
+      status: false
     }
   }
 
@@ -29,23 +31,22 @@ class App extends Component {
       method: 'GET',
       mode: 'cors'
     }
-    fetch(ENDPOINT + '/data', head)
-      .then(r => r.text())
-      .then(res => {
-        this.setState({ letters: res.split('') })
-      })
-    fetch(ENDPOINT + '/queue', head)
-      .then(r => r.text())
-      .then(currently => {
-        this.setState({ currently })
+    fetch(ENDPOINT, head)
+      .then(r => r.json())
+      .then(json => {
+        console.log(json)
+        const letters = json.characters.split('')
+        const { queue, status } = json
+        console.log(queue, status)
+        this.setState({ letters, currently: queue, status })
       })
   }
 
   render() {
-    const { letters, currently } = this.state
+    const { letters, currently, status } = this.state
     return (
       <main>
-        <Header />
+        <Header status={status} />
         <Flex wrap align="center">
           {letters.map((letter, i) => (
             <Letter key={`letter-${i}`}>{letter}</Letter>
