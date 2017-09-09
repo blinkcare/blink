@@ -1,8 +1,8 @@
 import serial
 import time
-#from flask import Flask
+from flask import Flask, render_template
 
-#app = Flask(__name__)
+app = Flask(__name__)
 ser = serial.Serial('/dev/ttyACM0', 9600)
 
 morseAlphabet ={
@@ -43,6 +43,7 @@ short_press = 100
 long_press = 500
 new_char = 1000
 new_word = 3000
+reset = 6000
 
 queue = ""
 characters = ""
@@ -106,5 +107,16 @@ while True:
             s()
         elif change > long_press:
             l()
+        elif change > reset:
+            characters = ""
+            queue = ""
+            started = False
 
-#@app.route('/data')
+@app.route('/data')
+def data():
+    global characters
+    return render_template("data.html", characters=characters)
+
+@app.route('/')
+def index():
+    return render_template("index.html")
