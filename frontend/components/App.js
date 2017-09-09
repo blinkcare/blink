@@ -25,11 +25,11 @@ class App extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   setInterval(() => {
-  //     this.fetchData()
-  //   }, 1000)
-  // }
+  componentDidMount() {
+    setInterval(() => {
+      this.fetchData()
+    }, 800)
+  }
 
   fetchData() {
     const head = {
