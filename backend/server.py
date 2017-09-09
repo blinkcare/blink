@@ -102,7 +102,7 @@ morseAlphabet ={
 
 morseAlphabet=dict((v,k) for (k,v) in morseAlphabet.items())
 
-threshold = 1800
+threshold = 200
 
 short_press = 150
 long_press = 600
