@@ -35,7 +35,7 @@ class Body extends Component {
     const { letters, typing } = this.state
     return (
       <Box>
-        <Flex align="center">
+        <Flex wrap align="center">
           {letters.map((letter, i) => (
             <Letter key={`letter-${i}`}>{letter}</Letter>
           ))}
