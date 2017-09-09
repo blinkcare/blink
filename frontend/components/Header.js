@@ -2,6 +2,7 @@ import React from 'react'
 import { Flex, Heading } from 'rebass'
 import styled, { keyframes } from 'styled-components'
 import colors from './colors'
+import Icon from './Icon'
 
 const Name = styled(Heading)`
   font-size: 1.25rem;
@@ -26,7 +27,11 @@ const Badge = styled.span`
 
 const Header = ({ status }) => (
   <Flex align="center" p={3}>
-    <Badge status={status} />
+    <Icon
+      name="remove_red_eye"
+      size={16}
+      fill={status ? colors.blue : colors.grey}
+    />
     <Name m={0} ml={1}>
       Blink
     </Name>
