@@ -6,11 +6,26 @@ from threading import Thread
 app = Flask(__name__)
 
 characters = ""
+started = False
 
 @app.route('/data')
 def data():
     global characters
     return render_template("data.html", characters=characters)
+
+@app.route('/status')
+def status():
+    global started
+    global queue
+    status = ""
+    if started:
+        status += "Currently started"
+    else:
+        status += "Currently not started"
+    status += '\n' + queue
+
+    return render_template("status.html", status=status)
+
 
 @app.route('/')
 def index():

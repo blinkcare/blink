@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
 body {
         background-color: #000000;
@@ -24,6 +25,19 @@ body {
         margin-top: 70px;
         margin-left: 60px;
     }
+
+    /* .stats {
+        text-align: right;
+        position: absolute;
+        font-family: Atlas Grotesk Web;
+        font-size: 100%;
+        color: #FFFFFF;
+        width: 100px;
+        letter-spacing: 10px;
+        line-height: 1.7em;
+        top: 0;
+        right: 0;
+    } */
 
     a {
         padding-top: 50px;
@@ -93,6 +107,9 @@ body {
     <div id="chars">
         <br> Text goes here
     </div>
+        <h1 class="text-right" id="stats">
+            stats
+        </h1>
         <div class="footer">
             <svg height="2" width="1250">
                 <!-- <line x1="0" y1="0" x2="1250" y2="0" style="stroke:rgb(255,255,255);stroke-width:3" /> Sorry, your browser does not support inline SVG. -->
@@ -110,6 +127,14 @@ body {
             type: "get",
             success: function(response) {
                 $("#chars").html(response)
+            },
+        })}, 1000)
+        setInterval(function() {
+            $.ajax({
+            url: "/status",
+            type: "get",
+            success: function(response) {
+                $("#stats").html(response)
             },
         })}, 1000)
     </script>
