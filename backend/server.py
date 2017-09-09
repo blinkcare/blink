@@ -10,14 +10,15 @@ from gtts import gTTS
 app = Flask(__name__)
 CORS(app)
 
-
 characters = ""
 started = False
+
 
 @app.route('/data')
 def data():
     global characters
     return render_template("data.html", characters=characters)
+
 
 @app.route('/status')
 def status():
@@ -30,10 +31,12 @@ def status():
 
     return render_template("status.html", status=status)
 
+
 @app.route('/queue')
 def queue_set():
     global queue
     return render_template("queue.html", queue=queue)
+
 
 @app.route('/')
 def js():
@@ -42,12 +45,14 @@ def js():
     d = {"characters": characters, "status": status, "queue": queue}
     return jsonify(d)
 
+
 @app.route('/mp3')
 def mp3():
     if os.path.isfile("word.mp3"):
         return send_from_directory(".", "word.mp3")
     else:
         return ''
+
 
 def mp3_transcribe():
     print("Transcribing")
@@ -56,6 +61,7 @@ def mp3_transcribe():
     tts = gTTS(text=word, lang='en', slow=True)
     tts.save("word.mp3")
 
+
 # @app.route('/')
 # def index():
 #     return render_template("index.html")
@@ -63,44 +69,42 @@ def mp3_transcribe():
 p = Thread(target=app.run)
 p.start()
 
-
 ################################################################
-
 
 ser = serial.Serial('/dev/ttyACM0', 9600)
 
-morseAlphabet ={
-        "A" : ".-",
-        "B" : "-...",
-        "C" : "-.-.",
-        "D" : "-..",
-        "E" : ".",
-        "F" : "..-.",
-        "G" : "--.",
-        "H" : "....",
-        "I" : "..",
-        "J" : ".---",
-        "K" : "-.-",
-        "L" : ".-..",
-        "M" : "--",
-        "N" : "-.",
-        "O" : "---",
-        "P" : ".--.",
-        "Q" : "--.-",
-        "R" : ".-.",
-        "S" : "...",
-        "T" : "-",
-        "U" : "..-",
-        "V" : "...-",
-        "W" : ".--",
-        "X" : "-..-",
-        "Y" : "-.--",
-        "Z" : "--..",
-        " " : "....-",
-        "\\" : "--...",
-        }
+morseAlphabet = {
+    "A": ".-",
+    "B": "-...",
+    "C": "-.-.",
+    "D": "-..",
+    "E": ".",
+    "F": "..-.",
+    "G": "--.",
+    "H": "....",
+    "I": "..",
+    "J": ".---",
+    "K": "-.-",
+    "L": ".-..",
+    "M": "--",
+    "N": "-.",
+    "O": "---",
+    "P": ".--.",
+    "Q": "--.-",
+    "R": ".-.",
+    "S": "...",
+    "T": "-",
+    "U": "..-",
+    "V": "...-",
+    "W": ".--",
+    "X": "-..-",
+    "Y": "-.--",
+    "Z": "--..",
+    " ": "....-",
+    "\\": "--...",
+}
 
-morseAlphabet=dict((v,k) for (k,v) in morseAlphabet.items())
+morseAlphabet = dict((v, k) for (k, v) in morseAlphabet.items())
 
 threshold = 200
 
@@ -114,13 +118,16 @@ queue = ""
 
 started = False
 
+
 def s():
     global queue
     queue += "."
 
+
 def l():
     global queue
     queue += "-"
+
 
 def get_value():
     v = ser.readline().strip()
@@ -128,6 +135,7 @@ def get_value():
         return int(v)
     else:
         return 0
+
 
 while True:
     if '..--' in queue:

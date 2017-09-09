@@ -3,6 +3,7 @@ import time
 
 ser = serial.Serial('/dev/ttyACM0', 9600)
 
+
 def get_value():
     v = ser.readline().strip()
     if v.isdigit():
@@ -10,5 +11,6 @@ def get_value():
     else:
         return 0
 
+
 while True:
-	print(get_value())
+    print(get_value())
