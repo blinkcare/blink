@@ -27,9 +27,7 @@ class Body extends Component {
       mode: 'cors'
     }
     fetch(ENDPOINT, head).then(r => r.text()).then(res => {
-      const { letters } = this.state
-      letters.push(res.split(''))
-      this.setState({ letters, typing: false })
+      this.setState({ letters: res.split(''), typing: false })
     })
   }
 
