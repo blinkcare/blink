@@ -64,12 +64,12 @@ def get_value():
         return 0
 
 while True:
-    if '........' in queue:
-        queue = queue.split('........')[1]
+    if '..--' in queue:
+        queue = ""
         started = True
     elif '......' in queue:
         started = False
-        queue = queue.split('......')[1]
+        queue = ""
     value = get_value()
     print(queue)
     millis = int(round(time.time() * 1000))
@@ -77,21 +77,23 @@ while True:
         value = get_value()
     change = int(round(time.time() * 1000)) - millis
     if new_char < change < new_word:
-        try:
-            characters += morseAlphabet[queue]
-            print(characters)
-            queue = ""
-        except:
-            queue = ""
+        if started == True:
+            try:
+                characters += morseAlphabet[queue]
+                print(characters)
+                queue = ""
+            except:
+                queue = ""
     elif change > new_word:
-        try:
-            characters += morseAlphabet[queue]
+        if started == True:
+            try:
+                characters += morseAlphabet[queue]
+                print(characters)
+                queue = ""
+            except:
+                queue = ""
+            characters += " "
             print(characters)
-            queue = ""
-        except:
-            queue = ""
-        characters += " "
-        print(characters)
     if value > threshold:
         millis = int(round(time.time() * 1000))
         while value > threshold:
