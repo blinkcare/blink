@@ -3,15 +3,17 @@ import { Box, Flex, Text } from 'rebass'
 import { isEmpty } from 'lodash'
 import fetch from 'unfetch'
 import Letter from './Letter'
+import Currently from './Currently'
 import Typing from './Typing'
 
-const ENDPOINT = 'http://localhost:5000/data'
+const ENDPOINT = 'http://localhost:5000'
 
 class Body extends Component {
   constructor() {
     super()
     this.state = {
-      letters: ['H', 'e', 'l', 'l', 'o', ' ']
+      letters: [],
+      currently: ''
     }
   }
 
@@ -26,22 +28,26 @@ class Body extends Component {
       method: 'GET',
       mode: 'cors'
     }
-    fetch(ENDPOINT, head).then(r => r.text()).then(res => {
-      this.setState({ letters: res.split(''), typing: false })
+    fetch(ENDPOINT + '/data', head).then(r => r.text()).then(res => {
+      const { letters } = this.state
+      letters.push(res.split(''))
+      this.setState({ letters })
+    })
+    fetch(ENDPOINT + '/queue', head).then(r => r.text()).then(currently => {
+      this.setState({ currently })
     })
   }
 
   render() {
-    const { letters, typing } = this.state
+    const { letters, currently } = this.state
     return (
-      <Box>
-        <Flex wrap align="center">
-          {letters.map((letter, i) => (
-            <Letter key={`letter-${i}`}>{letter}</Letter>
-          ))}
-          <Typing ml={3} />
-        </Flex>
-      </Box>
+      <Flex wrap align="center">
+        {letters.map((letter, i) => (
+          <Letter key={`letter-${i}`}>{letter}</Letter>
+        ))}
+        <Currently ml={1} mr={3}>{currently}</Currently>
+        <Typing />
+      </Flex>
     )
   }
 }
