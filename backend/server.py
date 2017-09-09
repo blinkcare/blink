@@ -1,7 +1,8 @@
 import serial
 import time
-from flask import Flask, render_template
+from flask import Flask, render_template, make_response, jsonify
 from flask_cors import CORS
+import json
 from threading import Thread
 from gtts import gTTS
 
@@ -32,14 +33,22 @@ def status():
 def queue_set():
     global queue
     return render_template("queue.html", queue=queue)
+
+@app.route('/')
+def js():
+    global characters, started, queue
+    status = started
+    d = {"characters": characters, "status": status, "queue": queue}
+    return jsonify(d)
+
 #@app.route('/mp3')
 #def mp3():
 
 
 
-@app.route('/')
-def index():
-    return render_template("index.html")
+# @app.route('/')
+# def index():
+#     return render_template("index.html")
 
 p = Thread(target=app.run)
 p.start()
@@ -122,7 +131,9 @@ while True:
     millis = int(round(time.time() * 1000))
     while value < threshold:
         value = get_value()
-    change = int(round(time.time() * 1000)) - millis
+        change = int(round(time.time() * 1000)) - millis
+        if new_char < change:
+            break
     if new_char < change:
         if started == True:
             try:
