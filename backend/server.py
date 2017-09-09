@@ -20,16 +20,18 @@ def data():
 @app.route('/status')
 def status():
     global started
-    global queue
     status = ""
     if started:
-        status += "Currently started"
+        status += "True"
     else:
-        status += "Currently not started"
-    status += '\n' + queue
+        status += "False"
 
     return render_template("status.html", status=status)
 
+@app.route('/queue')
+def queue_set():
+    global queue
+    return render_template("queue.html", queue=queue)
 #@app.route('/mp3')
 #def mp3():
 
