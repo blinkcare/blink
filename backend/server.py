@@ -1,6 +1,7 @@
 import serial
 import time
-from flask import Flask, render_template, make_response, jsonify
+import os
+from flask import Flask, render_template, make_response, jsonify, send_from_directory
 from flask_cors import CORS
 import json
 from threading import Thread
@@ -41,10 +42,19 @@ def js():
     d = {"characters": characters, "status": status, "queue": queue}
     return jsonify(d)
 
-#@app.route('/mp3')
-#def mp3():
+@app.route('/mp3')
+def mp3():
+    if os.path.isfile("word.mp3"):
+        return send_from_directory(".", "word.mp3")
+    else:
+        return ''
 
-
+def mp3_transcribe():
+    print("Transcribing")
+    word = list(filter(None, characters.split(' ')))[-1]
+    print(word)
+    tts = gTTS(text=word, lang='en', slow=True)
+    tts.save("word.mp3")
 
 # @app.route('/')
 # def index():
@@ -93,8 +103,8 @@ morseAlphabet=dict((v,k) for (k,v) in morseAlphabet.items())
 
 threshold = 1800
 
-short_press = 100
-long_press = 500
+short_press = 150
+long_press = 600
 new_char = 1000
 new_word = 3000
 reset = 6000
@@ -138,6 +148,8 @@ while True:
         if started == True:
             try:
                 characters += morseAlphabet[queue]
+                if characters[-1] == ' ':
+                    mp3_transcribe()
                 queue = ""
             except:
                 queue = ""
