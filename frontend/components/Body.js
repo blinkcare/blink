@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Box, Flex, Text } from 'rebass'
+import { Flex, Text } from 'rebass'
 import { isEmpty } from 'lodash'
 import fetch from 'unfetch'
 import Letter from './Letter'
@@ -45,7 +45,8 @@ class Body extends Component {
         {letters.map((letter, i) => (
           <Letter key={`letter-${i}`}>{letter}</Letter>
         ))}
-        <Currently ml={1} mr={3}>{currently}</Currently>
+        {!isEmpty(currently) &&
+          <Currently ml={1} mr={3}>{currently}</Currently>}
         <Typing />
       </Flex>
     )
