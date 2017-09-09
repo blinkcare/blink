@@ -122,7 +122,9 @@ while True:
     millis = int(round(time.time() * 1000))
     while value < threshold:
         value = get_value()
-    change = int(round(time.time() * 1000)) - millis
+        change = int(round(time.time() * 1000)) - millis
+        if new_char < change:
+            break
     if new_char < change:
         if started == True:
             try:
