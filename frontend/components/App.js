@@ -7,6 +7,8 @@ import Card from './Card'
 import Readout from './Readout'
 import Currently from './Currently'
 import Typing from './Typing'
+
+import Giphy from './Giphy'
 import Weather from './Weather'
 import News from './News'
 
