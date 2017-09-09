@@ -26,7 +26,7 @@ const Badge = styled.span`
 `
 
 const Header = ({ status }) => (
-  <Flex align="center" p={3}>
+  <Flex align="center" p={3} pt={4} pb={0}>
     <Icon
       name="remove_red_eye"
       size={16}

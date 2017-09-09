@@ -33,10 +33,12 @@ class App extends Component {
       method: 'GET',
       mode: 'cors'
     }
-    fetch(ENDPOINT, head).then(res => res.json()).then(res => {
-      const { characters, queue, status } = res
-      this.setState({ characters, currently: queue, status })
-    })
+    fetch(ENDPOINT, head)
+      .then(res => res.json())
+      .then(res => {
+        const { characters, queue, status } = res
+        this.setState({ characters, currently: queue, status })
+      })
   }
 
   render() {
@@ -50,8 +52,8 @@ class App extends Component {
             {currently && <Currently mr={3} children={currently} />}
             <Typing />
           </Flex>
-          <Weather></Weather>
         </Card>
+        <Weather />
       </main>
     )
   }
