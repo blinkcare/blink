@@ -1,0 +1,60 @@
+/*
+        This font software is the property of Commercial Type.
+
+        You may not modify the font software, use it on another website, or install it on a computer.
+
+        License information is available at http://commercialtype.com/eula
+        For more information please visit Commercial Type at http://commercialtype.com or email us at info[at]commercialtype.com
+
+        Copyright (C) 2013 Schwartzco Inc.
+        License: 1508-YIRINU     
+*/
+
+
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url('AtlasGrotesk-Light-Web.eot');
+  src: url('AtlasGrotesk-Light-Web.eot?') format('embedded-opentype'),
+     url('AtlasGrotesk-Light-Web.woff') format('woff'),
+     url('AtlasGrotesk-Light-Web.ttf') format('truetype'),
+     url('AtlasGrotesk-Light-Web.svg') format('svg');
+  font-weight:  300;
+  font-style:   normal;
+  font-stretch: normal;
+}
+
+.AtlasGrotesk-Light-Web {
+  font-family: 'Atlas Grotesk Web';
+  font-weight:  300;
+  font-style:   normal;
+  font-stretch: normal;
+}
+
+
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url('AtlasGrotesk-LightItalic-Web.eot');
+  src: url('AtlasGrotesk-LightItalic-Web.eot?') format('embedded-opentype'),
+     url('AtlasGrotesk-LightItalic-Web.woff') format('woff'),
+     url('AtlasGrotesk-LightItalic-Web.ttf') format('truetype'),
+     url('AtlasGrotesk-LightItalic-Web.svg') format('svg');
+  font-weight:  300;
+  font-style:   italic;
+  font-stretch: normal;
+}
+
+.AtlasGrotesk-LightItalic-Web {
+  font-family: 'Atlas Grotesk Web';
+  font-weight:  300;
+  font-style:   italic;
+  font-stretch: normal;
+}
+
+body {
+-moz-font-feature-settings: "liga", "kern";
+-moz-font-feature-settings:"liga=1, kern=1";
+-ms-font-feature-settings:"liga", "kern";
+-o-font-feature-settings:"liga", "kern";
+-webkit-font-feature-settings:"liga", "kern";
+font-feature-settings: "liga", "kern";
+}
