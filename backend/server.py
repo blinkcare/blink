@@ -5,6 +5,35 @@ from flask import Flask
 app = Flask(__name__)
 ser = serial.Serial('/dev/ttyACM0', 9600)
 
+morseAlphabet ={
+        "A" : ".-",
+        "B" : "-...",
+        "C" : "-.-.",
+        "D" : "-..",
+        "E" : ".",
+        "F" : "..-.",
+        "G" : "--.",
+        "H" : "....",
+        "I" : "..",
+        "J" : ".---",
+        "K" : "-.-",
+        "L" : ".-..",
+        "M" : "--",
+        "N" : "-.",
+        "O" : "---",
+        "P" : ".--.",
+        "Q" : "--.-",
+        "R" : ".-.",
+        "S" : "...",
+        "T" : "-",
+        "U" : "..-",
+        "V" : "...-",
+        "W" : ".--",
+        "X" : "-..-",
+        "Y" : "-.--",
+        "Z" : "--.."
+        }
+
 threshold = 1800
 
 short_press = 300
@@ -13,6 +42,7 @@ new_char = 1000
 new_word = 3000
 
 queue = ""
+characters = ""
 
 started = False
 
@@ -45,9 +75,14 @@ while True:
         value = get_value()
     change = int(round(time.time() * 1000)) - millis
     if new_char < change < new_word:
-        queue += " "
+        try:
+            characters += morseAlphabet[queue]
+            queue = ""
+        except:
+            queue = ""
     elif change > new_word:
-        queue += "/"
+        queue = ""
+        characters += " "
     if value > threshold:
         millis = int(round(time.time() * 1000))
         while value > threshold:
