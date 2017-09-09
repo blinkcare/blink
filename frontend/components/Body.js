@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Box, Flex, Text } from 'rebass'
+import Typing from './Typing'
 
 class Body extends Component {
   constructor() {
@@ -11,6 +12,7 @@ class Body extends Component {
     return (
       <Box>
         <Text>Hello!</Text>
+        <Typing />
       </Box>
     )
   }
