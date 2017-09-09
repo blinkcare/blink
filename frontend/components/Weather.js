@@ -16,14 +16,8 @@ const Label = props => <Small f={2} color={colors.grey} ml={1} {...props} />
 
 const icon = a => {
   const sunny = <Icon name="wb_sunny" fill="#f8b700" />
-  switch (a) {
-    case /sun/.test(a):
-      return sunny
-    case /cloud/.test(a):
-      return <Icon name="cloud" fill={colors.grey} />
-    default:
-      return sunny
-  }
+  const cloudy = <Icon name="cloud" fill={colors.grey} />
+  return /cloud/.test(a) ? cloudy : sunny
 }
 
 class Weather extends Component {
