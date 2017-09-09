@@ -14,30 +14,6 @@ characters = ""
 started = False
 
 
-@app.route('/data')
-def data():
-    global characters
-    return render_template("data.html", characters=characters)
-
-
-@app.route('/status')
-def status():
-    global started
-    status = ""
-    if started:
-        status += "True"
-    else:
-        status += "False"
-
-    return render_template("status.html", status=status)
-
-
-@app.route('/queue')
-def queue_set():
-    global queue
-    return render_template("queue.html", queue=queue)
-
-
 @app.route('/')
 def js():
     global characters, started, queue
@@ -61,10 +37,6 @@ def mp3_transcribe():
     tts = gTTS(text=word, lang='en', slow=True)
     tts.save("word.mp3")
 
-
-# @app.route('/')
-# def index():
-#     return render_template("index.html")
 
 p = Thread(target=app.run)
 p.start()
