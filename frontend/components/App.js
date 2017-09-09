@@ -12,7 +12,7 @@ import Giphy from './Giphy'
 import Weather from './Weather'
 import News from './News'
 
-const ENDPOINT = 'http://blinkpennapps.localtunnel.me/'
+const ENDPOINT = 'https://blinkpennapps.localtunnel.me/'
 
 class App extends Component {
   constructor() {
