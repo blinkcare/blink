@@ -101,7 +101,7 @@ morseAlphabet = {
     "Y": "-.--",
     "Z": "--..",
     " ": "....-",
-    "\\": "--...",
+    "/": "--...",
 }
 
 morseAlphabet = dict((v, k) for (k, v) in morseAlphabet.items())
