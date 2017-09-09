@@ -6,7 +6,7 @@ import Letter from './Letter'
 import Currently from './Currently'
 import Typing from './Typing'
 
-const ENDPOINT = 'http://localhost:5000'
+const ENDPOINT = 'http://blinkpennapps.localtunnel.me'
 
 class Body extends Component {
   constructor() {
