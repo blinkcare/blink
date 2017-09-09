@@ -8,6 +8,7 @@ import Readout from './Readout'
 import Currently from './Currently'
 import Typing from './Typing'
 import Weather from './Weather'
+import News from './News'
 
 const ENDPOINT = 'http://blinkpennapps.localtunnel.me/'
 const APPS = ['gif', 'w', 'n']
@@ -22,11 +23,11 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    setInterval(() => {
-      this.fetchData()
-    }, 1000)
-  }
+  // componentDidMount() {
+  //   setInterval(() => {
+  //     this.fetchData()
+  //   }, 1000)
+  // }
 
   fetchData() {
     const head = {
@@ -54,6 +55,7 @@ class App extends Component {
           </Flex>
         </Card>
         <Weather />
+        <News />
       </main>
     )
   }
