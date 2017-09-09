@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import { Text, Flex, Subhead } from 'rebass'
 import { map } from 'lodash'
 import Card from './Card'
@@ -34,7 +35,7 @@ class News extends Component {
         <Subhead mt={0} color={colors.slate} f={3} caps>
           News
         </Subhead>
-        <Flex wrap mt={2}>
+        <Flex wrap mt={1}>
           {news.map((title, i) => (
             <Article key={`article-${i}`}>{title}</Article>
           ))}
@@ -44,6 +45,16 @@ class News extends Component {
   }
 }
 
-const Article = props => <Text mb={1} {...props} />
+const Article = styled(Text)`
+  display: block;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px dotted ${colors.smoke};
+  width: 100%;
+
+  &:first-child {
+    border-top: 1px dotted ${colors.smoke};
+  }
+`
 
 export default News
