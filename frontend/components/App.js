@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { Flex, Text } from 'rebass'
 import { isEmpty } from 'lodash'
 import fetch from 'unfetch'
+import Header from './Header'
 import Letter from './Letter'
 import Currently from './Currently'
 import Typing from './Typing'
 
 const ENDPOINT = 'http://blinkpennapps.localtunnel.me'
 
-class Body extends Component {
+class App extends Component {
   constructor() {
     super()
     this.state = {
@@ -43,19 +44,22 @@ class Body extends Component {
   render() {
     const { letters, currently } = this.state
     return (
-      <Flex wrap align="center">
-        {letters.map((letter, i) => (
-          <Letter key={`letter-${i}`}>{letter}</Letter>
-        ))}
-        {!isEmpty(currently) && (
-          <Currently ml={1} mr={3}>
-            {currently}
-          </Currently>
-        )}
-        <Typing />
-      </Flex>
+      <main>
+        <Header />
+        <Flex wrap align="center">
+          {letters.map((letter, i) => (
+            <Letter key={`letter-${i}`}>{letter}</Letter>
+          ))}
+          {!isEmpty(currently) && (
+            <Currently ml={1} mr={3}>
+              {currently}
+            </Currently>
+          )}
+          <Typing />
+        </Flex>
+      </main>
     )
   }
 }
 
-export default Body
+export default App
