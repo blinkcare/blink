@@ -28,12 +28,13 @@ class Body extends Component {
       mode: 'cors'
     }
     fetch(ENDPOINT, head)
+    .then(r => r.text())
       .then(res => {
         if (isEmpty(res)) {
           this.setState({ typing: true })
         } else {
           const { letters } = this.state
-          letters.push(res)
+          letters.push(res.split(''))
           this.setState({ letters, typing: false })
         }
       })
