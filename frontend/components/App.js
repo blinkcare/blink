@@ -32,8 +32,8 @@ class App extends Component {
       method: 'GET',
       mode: 'cors'
     }
-    fetch(ENDPOINT, head).then(res => {
-      const { characters, queue, status } = res.json()
+    fetch(ENDPOINT, head).then(res => res.json()).then(res => {
+      const { characters, queue, status } = res
       this.setState({ characters, currently: queue, status })
     })
   }
