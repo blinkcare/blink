@@ -1,8 +1,8 @@
 import serial
 import time
-from flask import Flask
+#from flask import Flask
 
-app = Flask(__name__)
+#app = Flask(__name__)
 ser = serial.Serial('/dev/ttyACM0', 9600)
 
 morseAlphabet ={
@@ -33,6 +33,8 @@ morseAlphabet ={
         "Y" : "-.--",
         "Z" : "--.."
         }
+
+morseAlphabet=dict((v,k) for (k,v) in morseAlphabet.items())
 
 threshold = 1800
 
@@ -77,12 +79,19 @@ while True:
     if new_char < change < new_word:
         try:
             characters += morseAlphabet[queue]
+            print(characters)
             queue = ""
         except:
             queue = ""
     elif change > new_word:
-        queue = ""
+        try:
+            characters += morseAlphabet[queue]
+            print(characters)
+            queue = ""
+        except:
+            queue = ""
         characters += " "
+        print(characters)
     if value > threshold:
         millis = int(round(time.time() * 1000))
         while value > threshold:
