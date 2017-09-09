@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Flex } from 'rebass'
-import { isEmpty } from 'lodash'
+import { isEmpty, includes, replace } from 'lodash'
 import fetch from 'unfetch'
 import Header from './Header'
 import Card from './Card'
@@ -13,7 +13,6 @@ import Weather from './Weather'
 import News from './News'
 
 const ENDPOINT = 'http://blinkpennapps.localtunnel.me/'
-const APPS = ['gif', 'w', 'n']
 
 class App extends Component {
   constructor() {
@@ -21,7 +20,8 @@ class App extends Component {
     this.state = {
       characters: '',
       currently: '',
-      status: false
+      status: false,
+      app: false
     }
   }
 
@@ -40,12 +40,20 @@ class App extends Component {
       .then(res => res.json())
       .then(res => {
         const { characters, queue, status } = res
-        this.setState({ characters, currently: queue, status })
+        let app
+        if (includes(characters, /\/n$/)) {
+          app = <News />
+        } else if (includes(characters, /\/w$/)) {
+          app = <Weather />
+        } else if (includes(characters, /\/gif/)) {
+          app = <Giphy search={replace(characters, '/gif ', '')} />
+        }
+        this.setState({ characters, currently: queue, status, app })
       })
   }
 
   render() {
-    const { characters, currently, status } = this.state
+    const { characters, currently, status, app } = this.state
     return (
       <Flex column align="center">
         <Header status={status} />
@@ -56,8 +64,7 @@ class App extends Component {
             <Typing />
           </Flex>
         </Card>
-        <Weather />
-        <News />
+        {!isEmpty(app) && app}
       </Flex>
     )
   }
