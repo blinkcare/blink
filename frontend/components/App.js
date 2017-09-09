@@ -7,6 +7,7 @@ import Card from './Card'
 import Readout from './Readout'
 import Currently from './Currently'
 import Typing from './Typing'
+import Weather from './Weather'
 
 const ENDPOINT = 'http://blinkpennapps.localtunnel.me/'
 const APPS = ['gif', 'w', 'n']
@@ -49,6 +50,7 @@ class App extends Component {
             {currently && <Currently mr={3} children={currently} />}
             <Typing />
           </Flex>
+          <Weather></Weather>
         </Card>
       </main>
     )
