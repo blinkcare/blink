@@ -59,4 +59,4 @@ while True:
         elif change > long_press:
             l()
 
-@app.route('/data')
+#@app.route('/data')
