@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Text, Flex, Subhead } from 'rebass'
-import { map } from 'lodash'
+import { slice, map } from 'lodash'
 import Card from './Card'
 import colors from './colors'
 import fetch from 'unfetch'
@@ -23,7 +23,7 @@ class News extends Component {
     fetch(NEWS_API)
       .then(res => res.json())
       .then(data => {
-        const news = map(data.articles, 'title')
+        const news = slice(map(data.articles, 'title'), 0, 8)
         this.setState({ news })
       })
   }
@@ -31,7 +31,7 @@ class News extends Component {
   render() {
     const { news } = this.state
     return (
-      <Card w={2 / 3}>
+      <Card w={[1, 1 / 2]}>
         <Subhead mt={0} f={3} caps>
           News
         </Subhead>

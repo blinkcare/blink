@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Flex } from 'rebass'
+import { Flex, Box } from 'rebass'
 import { isEmpty, includes, last, split } from 'lodash'
 import fetch from 'unfetch'
 import Header from './Header'
@@ -66,6 +66,10 @@ class App extends Component {
         </Card>
         {!isEmpty(app) && app}
       </Flex>
+          <Weather />
+          <News />
+        </Flex>
+      </Box>
     )
   }
 }

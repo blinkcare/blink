@@ -5,7 +5,7 @@ import colors from './colors'
 import Icon from './Icon'
 
 const Header = ({ status }) => (
-  <Flex justify="center" align="center" p={3} pt={4} pb={0}>
+  <Flex justify="center" align="center" pt={4} px={3} pb={2}>
     <Icon
       name="remove_red_eye"
       size={32}

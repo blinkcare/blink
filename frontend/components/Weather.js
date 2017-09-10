@@ -62,14 +62,14 @@ class Weather extends Component {
       condition
     } = this.state
     return (
-      <Card w={1 / 2}>
+      <Card w={[1, 1 / 3]} mr={[0, 2]}>
         <Subhead mt={0} f={3} caps>
           Weather
         </Subhead>
         <Flex align="center">
           <Icon name="pin" size={16} fill={colors.grey} />
           <Text color={colors.grey} ml={1}>
-            University of Pennsylvania{' '}
+            University of Pennsylvania
           </Text>
         </Flex>
         <Flex align="center" mt={2} style={{ lineHeight: '1' }}>
