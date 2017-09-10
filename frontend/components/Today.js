@@ -15,7 +15,7 @@ const Today = ({ dt }) => (
     <Flex align="center" mt={2}>
       <Calendar month="Sept" day={dt.getDate()} />
       <Text f={6} ml={24}>
-        {dt.getHours()}:{dt.getMinutes()}
+        {dt.getHours()}:{("0" + dt.getMinutes()).slice(-2)}
       </Text>
       <Box />
     </Flex>
