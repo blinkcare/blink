@@ -74,6 +74,7 @@ morseAlphabet = {
     "Z": "--..",
     " ": "....-",
     "/": "---...",
+    "_": "...---"
 }
 
 morseAlphabet = dict((v, k) for (k, v) in morseAlphabet.items())
@@ -131,6 +132,8 @@ while True:
         if started == True:
             try:
                 characters += morseAlphabet[queue]
+                if characters[-1] == '_':
+                    characters = characters[:-2]
                 if characters[-1] == ' ':
                     mp3_transcribe()
                 queue = ""
