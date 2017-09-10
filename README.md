@@ -1,18 +1,28 @@
 # Blink!
 
-## Setup
+Easy, affordable, accurate communication for ALS patients.
 
-Obtain and Arduino, a 1 megaohm resistor and some leads. Wire the resistor between 2 and three, and add the lead to the foil on the pin 3 end. Install dependencies as well: `pip3 install -r requirements.txt`
+**Demo:** https://blink.now.sh
 
-## Usage
+## Hardware Setup
 
-Run the server by going to backend and running `python3 server.py`. The webpage can be run by running `npm i && npm run dev`. That's it! 
+You'll need an Arduino, 1 megaohm resistor, and some leads. Wire the resistor between 2 and three, and add the lead to the foil on the pin 3 end.
 
 Mount the headset on a baseball cap so it is right next to your eyesocket. Make sure it isn't touching, only when you blink.
 
-## The Sequences
+## Software Setup
 
-It uses a slightly modified version of Morse code. All letters are the same, but to advance to the next word, wait around 2 seconds, and to add a space, do `....-`. 
+1. Install the server dependencies: `cd backend`, `pip3 install -r requirements.txt`
+2. Install the frontend dependencies: `cd frontend`, `npm i`
 
-**To start running**: `..--`
-**To stop running**: `......`
+## Usage
+
+1. Run the server: `cd backend`, `python3 server.py`
+2. Run the frontend: `cd frontend`, `npm run dev`
+
+## Sequences
+
+Blink uses a slightly modified version of Morse code. All letters are the same, but to advance to the next word, wait around 2 seconds, and to add a space, do `....-`.
+
+- **To start running**: `..--`
+- **To stop running**: `......`
