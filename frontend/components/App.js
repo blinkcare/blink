@@ -40,22 +40,17 @@ class App extends Component {
       .then(res => res.json())
       .then(res => {
         const { characters, queue, status } = res
-        let app
-        if (includes(characters, '/N')) {
-          app = <News />
-        } else if (includes(characters, '/W')) {
-          app = <Weather />
-        } else if (includes(characters, '/G ')) {
-          app = <Giphy q={last(split(characters, '/G '))} />
+        if (includes(characters, '/G ')) {
+          this.setState({ app: <Giphy q={last(split(characters, '/G '))} /> })
         }
-        this.setState({ characters, currently: queue, status, app })
+        this.setState({ characters, currently: queue, status })
       })
   }
 
   render() {
     const { characters, currently, status, app } = this.state
     return (
-      <Flex column align="center">
+      <Box>
         <Header status={status} />
         <Card>
           <Flex wrap align="center" w={1}>
@@ -65,7 +60,13 @@ class App extends Component {
           </Flex>
         </Card>
         {!isEmpty(app) && app}
-      </Flex>
+        <Flex
+          w={1}
+          direction={['column', 'row']}
+          align="flex-start"
+          justify="space-between"
+          wrap
+        >
           <Weather />
           <News />
         </Flex>
