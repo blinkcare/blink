@@ -5,7 +5,7 @@ import colors from './colors'
 
 const Background = styled(Box).attrs({
   p: 3,
-  my: 2,
+  mt: 2,
   mx: [0, 2]
 })`
   background-color: ${colors.white};

@@ -9,6 +9,7 @@ import Currently from './Currently'
 import Typing from './Typing'
 
 import Giphy from './Giphy'
+import Today from './Today'
 import Weather from './Weather'
 import News from './News'
 
@@ -53,11 +54,9 @@ class App extends Component {
       <Box>
         <Header status={status} />
         <Card>
-          <Flex wrap align="center" w={1}>
-            {characters && <Readout mr={2}>{characters}</Readout>}
-            {currently && <Currently mr={3} children={currently} />}
-            <Typing />
-          </Flex>
+          {characters && <Readout mr={2}>{characters}</Readout>}
+          {currently && <Currently mr={3} children={currently} />}
+          <Typing />
         </Card>
         {!isEmpty(app) && app}
         <Flex
@@ -67,7 +66,10 @@ class App extends Component {
           justify="space-between"
           wrap
         >
-          <Weather />
+          <Flex column w={[1, 1 / 3]} mr={2}>
+            <Today dt={new Date()} />
+            <Weather />
+          </Flex>
           <News />
         </Flex>
       </Box>
