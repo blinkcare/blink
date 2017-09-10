@@ -1,6 +1,6 @@
 # Blink!
 
-Easy, affordable, accurate communication for ALS patients.
+Affordable, accurate communication for ALS patients.
 
 **Demo:** https://blink.now.sh
 
@@ -26,3 +26,7 @@ Blink uses a slightly modified version of Morse code. All letters are the same, 
 
 - **To start running**: `..--`
 - **To stop running**: `......`
+
+---
+
+*Built in 36 hours for PennApps XVI. By @kusti8, @lachlanjc, @shamdasani, and @praveenravi77. MIT licensed.*
