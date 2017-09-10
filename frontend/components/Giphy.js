@@ -48,7 +48,7 @@ class Giphy extends Component {
   render() {
     const { results } = this.state
     return (
-      <Card w={1}>
+      <Card>
         <Heading>GIPHY</Heading>
         <Flex wrap m={-1}>
           {results.map((result, i) => (
