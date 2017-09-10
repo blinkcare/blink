@@ -9,6 +9,16 @@ import fetch from 'unfetch'
 const KEY = '506005f4fd084a9682b47944f9273c18'
 const URL = `https://api.giphy.com/v1/gifs/search?api_key=${KEY}&rating=g`
 
+const Heading = styled(Subhead).attrs({
+  mt: 0,
+  mb: 2,
+  f: 3,
+  pb: 1,
+  caps: true
+})`
+  border-bottom: 1px dotted ${colors.smoke};
+`
+
 class Giphy extends Component {
   constructor() {
     super()
@@ -38,11 +48,9 @@ class Giphy extends Component {
   render() {
     const { results } = this.state
     return (
-      <Card w={2 / 3}>
-        <Subhead mt={0} mb={2} f={3} caps center>
-          GIPHY
-        </Subhead>
-        <Flex wrap justify="center" m={-1}>
+      <Card w={1}>
+        <Heading>GIPHY</Heading>
+        <Flex wrap m={-1}>
           {results.map((result, i) => (
             <Result
               src={result.images.fixed_height_small.url}
