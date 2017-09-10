@@ -73,16 +73,16 @@ morseAlphabet = {
     "Y": "-.--",
     "Z": "--..",
     " ": "....-",
-    "/": "--...",
+    "/": "---...",
 }
 
 morseAlphabet = dict((v, k) for (k, v) in morseAlphabet.items())
 
 threshold = 200
 
-short_press = 150
-long_press = 600
-new_char = 1000
+short_press = 90
+long_press = 350
+new_char = 1200
 new_word = 3000
 reset = 6000
 
@@ -112,10 +112,12 @@ def get_value():
 while True:
     if '..--' in queue:
         queue = ""
+        characters = ""
         started = True
     elif '......' in queue:
         started = False
         queue = ""
+        characters = ""
     value = get_value()
     print(started)
     print(queue)
