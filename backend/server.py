@@ -38,7 +38,7 @@ def mp3_transcribe():
     tts.save("word.mp3")
 
 
-p = Thread(target=app.run)
+p = Thread(target=app.run, kwargs={"threaded": True})
 p.start()
 
 ################################################################
