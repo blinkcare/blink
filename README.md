@@ -24,8 +24,13 @@ Mount the headset on a baseball cap so it is right next to your eyesocket. Make 
 
 Blink uses a slightly modified version of Morse code. All letters are the same, but to advance to the next word, wait around 2 seconds, and to add a space, do `....-`.
 
+Special sequences:
+
 - **To start running**: `..--`
 - **To stop running**: `......`
+- **Space**: `....-`
+- **/**: `---...`
+- **Backspace**: `.---.`
 
 ---
 
