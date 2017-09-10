@@ -41,17 +41,18 @@ class App extends Component {
       .then(res => res.json())
       .then(res => {
         const { characters, queue, status } = res
+        let app
         if (includes(characters, '/G ')) {
-          this.setState({ app: <Giphy q={last(split(characters, '/G '))} /> })
+          app = <Giphy q={last(split(characters, '/G '))} />
         }
-        this.setState({ characters, currently: queue, status })
+        this.setState({ characters, currently: queue, status, app })
       })
   }
 
   render() {
     const { characters, currently, status, app } = this.state
     return (
-      <Box>
+      <Box mb={4}>
         <Header status={status} />
         <Card>
           {characters && <Readout mr={2}>{characters}</Readout>}
