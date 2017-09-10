@@ -1,6 +1,6 @@
 # Blink!
 
-Affordable, accurate communication for ALS patients.
+Affordable, accurate communication through blinking for people with conditions that don't let them otherwise. 
 
 **Demo:** https://blink.now.sh
 
