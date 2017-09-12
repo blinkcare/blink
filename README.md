@@ -3,6 +3,7 @@
 Affordable, accurate communication through blinking for people with conditions that don't let them otherwise. 
 
 **Demo:** https://blink.now.sh
+**Video** https://www.youtube.com/watch?v=f2C1TL8X2ds
 
 ## Hardware Setup
 
