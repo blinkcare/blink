@@ -38,3 +38,4 @@ Special sequences:
 ---
 
 *Built in 36 hours for PennApps XVI. By @kusti8, @lachlanjc, @shamdasani, and @praveenravi77. MIT licensed.*
+*Blink won the Health Route and the Most Unique Hack Award ($1k grant from 1517 Fund)*
