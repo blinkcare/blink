@@ -5,7 +5,7 @@ import { round } from 'lodash'
 import Card from './Card'
 import Icon from './Icon'
 import colors from './colors'
-import fetch from 'unfetch'
+import fetch from 'isomorphic-unfetch'
 
 const WEATHER_API =
   'https://earthnetworks.azure-api.net/data/observations/v4/current?&stationid=UPAEN&providerid=3&units=english&cultureinfo=en-en&verbose=true&ruledetails=true&verbose=true&metadata=true%20&includeqcflags=true&subscription-key=45ba7fa489cc472d8282b87d1ec04f18'

@@ -4,7 +4,7 @@ import { Text, Flex, Subhead } from 'rebass'
 import { slice, map } from 'lodash'
 import Card from './Card'
 import colors from './colors'
-import fetch from 'unfetch'
+import fetch from 'isomorphic-unfetch'
 
 const NEWS_API =
   'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=83781e51c30e4a3bb7cc2b0ffde70d8c'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Flex, Box } from 'rebass'
 import { isEmpty, includes, last, split } from 'lodash'
-import fetch from 'unfetch'
+import fetch from 'isomorphic-unfetch'
 import Header from './Header'
 import Card from './Card'
 import Readout from './Readout'
@@ -16,14 +16,11 @@ import News from './News'
 const ENDPOINT = 'https://blinkpennapps.localtunnel.me/'
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      characters: '',
-      currently: '',
-      status: false,
-      app: false
-    }
+  state = {
+    characters: '',
+    currently: '',
+    status: false,
+    app: false
   }
 
   componentDidMount() {

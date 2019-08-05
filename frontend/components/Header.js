@@ -1,6 +1,5 @@
 import React from 'react'
 import { Flex, Heading } from 'rebass'
-import styled, { keyframes } from 'styled-components'
 import colors from './colors'
 import Icon from './Icon'
 
