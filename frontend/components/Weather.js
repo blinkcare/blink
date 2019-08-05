@@ -4,11 +4,11 @@ import { Text, Box, Flex, Subhead, Small } from 'rebass'
 import { round } from 'lodash'
 import Card from './Card'
 import Icon from './Icon'
+import Typing from './Typing'
 import colors from './colors'
 import fetch from 'isomorphic-unfetch'
 
-const WEATHER_API =
-  'https://earthnetworks.azure-api.net/data/observations/v4/current?&stationid=UPAEN&providerid=3&units=english&cultureinfo=en-en&verbose=true&ruledetails=true&verbose=true&metadata=true%20&includeqcflags=true&subscription-key=45ba7fa489cc472d8282b87d1ec04f18'
+const API_KEY = 'ba95c43d421868c0b135e734fde3f264'
 
 const Heading = styled(Box).attrs({ pb: 1 })`
   border-bottom: 1px dotted ${colors.smoke};
@@ -29,14 +29,9 @@ const icon = a => {
 }
 
 class Weather extends Component {
-  constructor() {
-    super()
-    this.state = {
-      temperature: '',
-      temperatureHigh: '',
-      temperatureLow: '',
-      condition: ''
-    }
+  state = {
+    currently: 'loading',
+    forecast: {}
   }
 
   componentDidMount() {
@@ -44,28 +39,23 @@ class Weather extends Component {
   }
 
   fetchWeather() {
-    fetch(WEATHER_API)
+    const url =
+      'https://cors-anywhere.herokuapp.com/https://api.forecast.io/forecast/'
+
+    let [latitude, longitude] = [39.9493, -75.1896]
+
+    fetch(`${url}${API_KEY}/${latitude},${longitude}`)
       .then(res => res.json())
-      .then(data => {
-        const { temperature, IconDescription } = data.observation
-        const { temperatureLow, temperatureHigh } = data.highlow
-        this.setState({
-          temperature,
-          temperatureHigh,
-          temperatureLow,
-          condition: IconDescription
-        })
-      })
+      .then(forecast => this.setState({ forecast, currently: 'success' }))
+      .catch(() => this.setState({ currently: 'error' }))
   }
 
   render() {
-    const {
-      temperature,
-      temperatureHigh,
-      temperatureLow,
-      condition
-    } = this.state
-    return (
+    const { currently, forecast } = this.state
+    console.log(forecast)
+    return currently === 'loading' ? (
+      <Typing />
+    ) : (
       <Card w={1} mt={0}>
         <Heading>
           <Subhead mt={0} f={3} caps>
@@ -79,19 +69,17 @@ class Weather extends Component {
           </Flex>
         </Heading>
         <Flex align="center" mt={2} style={{ lineHeight: '1' }}>
-          {icon(condition)}
+          {icon(forecast.currently.icon)}
           <Text f={6} mx={2}>
-            {round(temperature)}
+            {round(forecast.currently.temperature)}
             <Unit>ºF</Unit>
           </Text>
           <Box>
             <Text mb={1}>
-              {round(temperatureHigh)}º
-              <Label>↑</Label>
+              {round(forecast.daily.data[0].temperatureHigh)}º<Label>↑</Label>
             </Text>
             <Text>
-              {round(temperatureLow)}º
-              <Label>↓</Label>
+              {round(forecast.daily.data[0].temperatureLow)}º<Label>↓</Label>
             </Text>
           </Box>
         </Flex>
