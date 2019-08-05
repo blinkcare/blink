@@ -7,11 +7,11 @@ const Background = styled(Flex)`
   flex-direction: column;
   flex-shrink: 0;
   text-align: center;
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   border: 4px solid ${colors.red};
   border-top-width: 2px;
-  border-radius: 8px;
+  border-radius: 12px;
 `
 
 const Month = styled.div`
@@ -22,7 +22,10 @@ const Month = styled.div`
   line-height: 1.75;
 `
 
-const Day = styled.div`font-size: 32px;`
+const Day = styled.div`
+  font-size: 32px;
+  line-height: 1.25;
+`
 
 const Calendar = ({ month, day, ...props }) => (
   <Background {...props}>
