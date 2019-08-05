@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "alias": "blink",
+  "name": "blink",
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }]
+}
