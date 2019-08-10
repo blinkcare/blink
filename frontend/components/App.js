@@ -24,9 +24,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    setInterval(() => {
-      this.fetchData()
-    }, 500)
+    // setInterval(() => {
+    //   this.fetchData()
+    // }, 500)
   }
 
   fetchData() {
